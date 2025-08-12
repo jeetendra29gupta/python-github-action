@@ -21,7 +21,6 @@ jobs:
       - name: Install dependencies from requirements.txt
         run: pip install -e .[test]
 
-
       - name: Run Pytest
         # The key new step! This command runs all your tests.
         run: pytest
