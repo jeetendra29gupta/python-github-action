@@ -1,0 +1,25 @@
+name: My First Python Action  # A name for your workflow
+
+on: # The event that triggers this workflow
+  push:
+    branches:
+      - main  # Run this workflow whenever a 'push' happens on the main branch
+
+jobs: # A workflow can have one or more jobs
+  build: # The ID for this job
+    runs-on: ubuntu-latest  # The type of machine to run the job on
+
+    steps: # The sequence of tasks to perform in this job
+      - name: Checkout repository  # A friendly name for this step
+        uses: actions/checkout@v4  # A pre-built action to get your code
+
+      - name: Set up Python
+        uses: actions/setup-python@v5  # A pre-built action to set up Python
+        with:
+          python-version: '3.10'  # Specify the Python version
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt  # A command-line script to run
+
+      - name: Run the Python script
+        run: python main.py  # Run our Python script
