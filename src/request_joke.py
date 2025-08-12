@@ -7,7 +7,7 @@ def get_joke():
         response = requests.get("https://api.chucknorris.io/jokes/random", timeout=5)
         response.raise_for_status()  # Raise an exception for bad status codes
         joke_data = response.json()
-        return joke_data['value']
+        return joke_data["value"]
     except requests.RequestException as e:
         print(f"An error occurred: {e}")
         return None
