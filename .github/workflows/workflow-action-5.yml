@@ -1,0 +1,37 @@
+name: My Github Action for testing and checking extra libs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies from requirements.txt
+        run: pip install -e ".[test,dev]"
+             pip install -r requirements.txt
+             pip install git+https://github.com/jeetendra29gupta/PyGatekeeper.git
+
+      - name: Run Pytest
+        # The key new step! This command runs all your tests.
+        run: pytest
+
+      - name: Check formatting with black
+        run: black --check .
+
+      - name: Lint with flake8
+        run: flake8 .
+
+      - name: Run the updated Python script
+        run: python main.py && python check_extra_lib/main.py
