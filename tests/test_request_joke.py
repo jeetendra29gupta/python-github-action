@@ -1,8 +1,6 @@
 from unittest.mock import patch, Mock
 
-import requests
-
-from src.request_joke import get_joke
+from request_joke import get_joke
 
 
 def test_get_joke_success():

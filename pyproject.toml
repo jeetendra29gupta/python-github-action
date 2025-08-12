@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-github-action"
+version = "0.0.1"
+description = "A sample project to demonstrate Python with GitHub Actions."
+requires-python = ">=3.8"
+dependencies = [
+    "requests",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
+
