@@ -26,4 +26,4 @@ jobs:
         run: pytest
 
       - name: Run the updated Python script
-        run: python main.py && python src/request_joke.py.py
+        run: python main.py && python src/request_joke.py
