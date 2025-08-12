@@ -18,13 +18,13 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies from requirements.txt
-        run: pip install -e ".[test,dev]"
-             pip install -r requirements.txt
-             pip install git+https://github.com/jeetendra29gupta/PyGatekeeper.git
+      - name: Install dependencies
+        run: |
+          pip install -e ".[test,dev]"
+          pip install -r requirements.txt
+          pip install git+https://github.com/jeetendra29gupta/PyGatekeeper.git
 
       - name: Run Pytest
-        # The key new step! This command runs all your tests.
         run: pytest
 
       - name: Check formatting with black
@@ -34,4 +34,6 @@ jobs:
         run: flake8 .
 
       - name: Run the updated Python script
-        run: python main.py && python check_extra_lib/main.py
+        run: | 
+          python main.py
+          python check_extra_lib/main.py
